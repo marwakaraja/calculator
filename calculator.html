@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>caculator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing:border-box ;
+        }
+        
+        form{
+            padding: 0 5px;
+            margin-bottom: 10px;
+            margin-left: 0%;
+            
+        }
+        #main{
+            
+            width: 100;
+            margin: 10px auto;
+            padding: 0px;
+        }
+        #textview{
+            width: 450px;
+            height: 40px;
+            padding: 0 10px;
+            pointer-events: none;
+            margin-left: 0.2%;
+        }
+        
+        .numbers{
+            margin-left:4%;
+            
+        }
+        #button{
+            width: 100px;
+            height: 40px;
+            margin-bottom: 4px;
+            
+        }
+        #clear{
+            width: 400px;
+            height: 40px;
+            margin-left: 0.5%;
+        }
+        #all
+        {
+            margin:  2% 30% 2% 30%;
+            border: 3px solid blue;
+            padding-left: 2%;
+            padding-bottom: 2%;
+        }
+        #lb1{
+            margin-bottom: 20px;
+            color: blue;
+            
+            font-size:xx-large;
+            margin-left: 120px;
+        }
+       body{
+            background-color: rgba(245, 248, 248, 0.283);
+            
+        }
+
+    </style>
+</head>
+<body >
+    <div id="all" >
+    <div id="main">
+        <form name="form">
+           <label id="lb1" for="textview"> caculator</label><br>
+            <input type="text" id="textview" name="textview"  placeholder="">
+        </form>
+    </div>
+    
+    <div class="numbers">
+        <div class="row">
+            <input type="button" value="7" id="button" onclick="insert(7)">
+            <input  type="button" value="8" id="button" onclick="insert(8)">
+            <input  type="button" value="9" id="button" onclick="insert(9)">
+            <input  type="button" value="+" id="button"onclick="insert('+')">
+        </div>
+        <div class="row"><input type="button" value="4" id="button" onclick="insert(4)">
+            <input   type="button" value="5" id="button" onclick="insert(5)">
+            <input  type="button" value="6" id="button" onclick="insert(6)">
+            <input  type="button" value="-" id="button" onclick="insert('-')">
+        </div>
+        <div class="row"><input  type="button" value="1" id="button" onclick="insert(1)">
+            <input  type="button"  value="2"id="button" onclick="insert(2)">
+            <input  type="button"  value="3"id="button" onclick="insert(3)">
+            <input  type="button" value="*" id="button" onclick="insert('*')">
+        </div>
+        <div class="row"><input  type="button" value="=" id="button" onclick="equal()">
+            <input  type="button" value="0" id="button" onclick="insert(0)">
+            <input  type="button" value="%" id="button" onclick="insert('%')">
+            <input  type="button" value="/" id="button" onclick="insert('/')">
+        </div>
+        <div><input  type="button" value="clear" id="clear" onclick="document.getElementById('textview').value=''"></div>
+    </div>
+    
+</div>
+
+<script>
+    function insert(num)
+    {
+        var mystring=document.getElementById('textview').value;
+        var lastchar=mystring[mystring.length - 1];
+        if (mystring.length < 30) {
+            if(!isNaN(lastchar) || lastchar==null || !isNaN(num) )
+            {
+                document.getElementById('textview').value=mystring + num;
+           
+
+        } 
+        else if(num != lastchar) {
+            document.getElementById('textview').value=mystring.replace(lastchar,num)
+            
+        }}
+    }
+    function equal(){
+        var sum=document.getElementById('textview').value;
+        if(sum){
+            document.getElementById('textview').value+= " = "+eval(sum);
+        }
+    }
+
+</script>
+</body>
+</html>
